@@ -41,7 +41,8 @@ int main() {
     while(true) {
         int client_fd = accept(server_fd, NULL, NULL);
         if (client_fd < 0) continue;
-        
+        char buffer[1024];
+        read(client_fd, buffer, sizeof(buffer));
         // Prepare body first
         std::string body = "Served by backend: " + std::string(hostname) + "\n";
 
